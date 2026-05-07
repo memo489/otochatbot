@@ -1,0 +1,30 @@
+name: 24/7 Discord Bot
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 */6 * * *' # Nurlan hər 6 saatdan bir yenidən başladır (GitHub-un dayanmaması üçün)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu yüklə
+        uses: actions/checkout@v3
+
+      - name: Python quraşdır
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Kitabxanaları yüklə
+        run: |
+          pip install discord.py==1.7.3 
+          # Qeyd: Self-bot üçün adətən köhnə versiyalar və ya discord.py-self tələb olunur
+
+      - name: Botu işə sal
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: python adin.py 
+        
