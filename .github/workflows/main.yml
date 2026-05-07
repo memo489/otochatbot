@@ -20,11 +20,12 @@ jobs:
 
       - name: Kitabxanaları yüklə
         run: |
-          pip install discord.py==1.7.3 
+          pip install discord.py==1.9.2
           # Qeyd: Self-bot üçün adətən köhnə versiyalar və ya discord.py-self tələb olunur
 
       - name: Botu işə sal
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-        run: python adin.py 
+        run: python otochat.py
+        
         
