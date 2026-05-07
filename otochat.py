@@ -29,7 +29,9 @@ client = MyClient()
 
 if __name__ == "__main__":
     if TOKEN:
-        client.run(TOKEN, bot=False) # bot=False mütləqdir çünki bu self-botdur
+        # 'bot=False' hissəsini sildik, çünki discord.py-self bunu avtomatik bilir
+        client.run(TOKEN) 
     else:
         print("TOKEN TAPILMADI!")
+        
         
